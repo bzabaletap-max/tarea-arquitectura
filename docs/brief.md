@@ -36,3 +36,30 @@ graph LR
 3.  **Backups y restauración:** Se realizarán copias de seguridad diarias y se ejecutará una prueba de restauración completa cada semestre para garantizar la continuidad.
 4.  **Gestión de incidentes:** En caso de caída del servicio, el equipo de TI tiene un máximo de 15 minutos para iniciar la comunicación de crisis y escalar al proveedor correspondiente.
 5.  **Gestión de proveedores/SaaS:** Todo proveedor externo debe cumplir con certificaciones mínimas de seguridad (ej. SOC2 o ISO 27001) para manejar datos de la organización.
+
+## A3) Riesgo y seguridad (NIST CSF 2.0)
+
+### Perfil Actual vs Perfil Objetivo
+Basado en las 6 funciones principales de NIST CSF 2.0, este es el estado de nuestra organización:
+
+| Función | Perfil Actual (T1) | Perfil Objetivo (T2) |
+| :--- | :--- | :--- |
+| **Govern** | Políticas básicas sin roles claros. | Gobernanza centralizada con COBIT. |
+| **Identify** | Inventario manual de activos. | Inventario automatizado de activos y datos. |
+| **Protect** | Uso de contraseñas simples. | MFA obligatorio y segmentación de red. |
+| **Detect** | Revisión manual de logs. | Alertas automatizadas en tiempo real. |
+| **Respond** | Respuesta reactiva ante fallos. | Plan de incidentes formal y probado. |
+| **Recover** | Backups sin pruebas de integridad. | Recuperación ante desastres (DRP) en la nube. |
+
+### 6 Controles Priorizados
+1. **Autenticación Multi-factor (MFA):** Bloquea el 99% de ataques de identidad. (Impacto: Alto / Viabilidad: Alta).
+2. **Segmentación de Red en Docker:** Aislar el contenedor del ERP de la tienda pública. (Impacto: Alto / Viabilidad: Alta).
+3. **Escaneo de Vulnerabilidades en Imágenes:** Detectar fallos en el software antes de subirlo. (Impacto: Medio / Viabilidad: Alta).
+4. **Cifrado de Datos (AES-256):** Protección de la base de datos de clientes en reposo. (Impacto: Alto / Viabilidad: Media).
+5. **Monitoreo de Logs Centralizado:** Trazabilidad de quién hizo qué y cuándo. (Impacto: Alto / Viabilidad: Media).
+6. **Pruebas de Penetración (Pentesting):** Simular ataques para hallar brechas. (Impacto: Medio / Viabilidad: Baja).
+
+### Plan de Respuesta a Incidentes (NIST IR)
+1. **Detección y Análisis:** Identificar anomalías en los logs del Broker de eventos (ej. picos de tráfico inusuales).
+2. **Contención y Erradicación:** Desconectar el servicio afectado, limpiar la imagen de Docker y parchar la vulnerabilidad.
+3. **Recuperación y Post-incidente:** Restaurar servicios desde el último backup sano y documentar las "Lecciones Aprendidas".
