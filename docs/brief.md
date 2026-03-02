@@ -15,11 +15,11 @@ graph TD
     end
 
     subgraph Middleware [Capa Integracion]
-        Broker((Message Broker))
+        Broker[Message Broker]
     end
 
-    subgraph Core [Núcleo]
-        ERP[(SAP ERP)]
+    subgraph Core [Nucleo]
+        ERP[SAP ERP]
     end
 
     subgraph Satellites [Sistemas Satelite]
@@ -33,7 +33,7 @@ graph TD
     ERP --> CRM
     ERP --> BI
     ```
-    
+
     ## A2) Gobierno de TI (COBIT — mínimo viable)
 
 ### Roles y Responsabilidades
