@@ -63,3 +63,31 @@ Basado en las 6 funciones principales de NIST CSF 2.0, este es el estado de nues
 1. **Detección y Análisis:** Identificar anomalías en los logs del Broker de eventos (ej. picos de tráfico inusuales).
 2. **Contención y Erradicación:** Desconectar el servicio afectado, limpiar la imagen de Docker y parchar la vulnerabilidad.
 3. **Recuperación y Post-incidente:** Restaurar servicios desde el último backup sano y documentar las "Lecciones Aprendidas".
+
+---
+
+## A4) Métricas (DORA + operación)
+
+Para medir el éxito de nuestra estrategia de integración y plataforma, utilizaremos los siguientes indicadores clave:
+
+### 2 Métricas de Entrega/Mejora (DORA)
+1. **Deployment Frequency (Frecuencia de Despliegue):**
+   * **Definición:** Cantidad de veces que el código de la tienda online se despliega con éxito en producción.
+   * **Por qué importa:** Indica qué tan rápido podemos lanzar nuevas funciones o correcciones al mercado.
+   * **Cómo medirla:** Conteo semanal de "Pipelines" de CI/CD completados con éxito hacia la rama principal.
+
+2. **Change Failure Rate (Tasa de fallos en cambios):**
+   * **Definición:** Porcentaje de despliegues que resultan en fallos críticos o requieren un "rollback".
+   * **Por qué importa:** Mide la calidad del software. No sirve de nada entregar rápido si lo que entregamos está roto.
+   * **Cómo medirla:** (Número de incidentes causados por cambios / Número total de despliegues) * 100.
+
+### 2 Métricas Operativas/Seguridad
+1. **Uptime del Broker de Eventos (Disponibilidad):**
+   * **Definición:** Tiempo total que el sistema de mensajería (Redis) está operativo y aceptando conexiones.
+   * **Por qué importa:** Si el broker cae, la comunicación entre el Front Office y el ERP se rompe, perdiendo pedidos.
+   * **Cómo medirla:** Reporte de monitoreo de Docker (Objetivo: 99.9% de disponibilidad).
+
+2. **MTTR (Mean Time to Recover - Tiempo promedio de recuperación):**
+   * **Definición:** Tiempo promedio que tarda el equipo en restaurar el servicio después de un fallo de seguridad o caída.
+   * **Por qué importa:** Mide nuestra resiliencia y capacidad de respuesta ante desastres.
+   * **Cómo medirla:** (Suma de tiempos de inactividad / Número de incidentes totales).
