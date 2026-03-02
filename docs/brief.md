@@ -7,7 +7,8 @@
 
 ### Diagrama de Arquitectura
 
-```graph TD
+```mermaid
+graph TD
     subgraph Front_Office [Front Office]
         Shopify[Tienda Online]
         POS[Venta Fisica]
