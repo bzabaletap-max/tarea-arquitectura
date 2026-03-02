@@ -12,3 +12,16 @@ Este repositorio contiene la entrega de la primera tarea del curso, enfocada en 
 3. Ejecutar el comando:
    ```bash
    docker compose up
+
+   ```markdown
+## Flujo de la Demo Técnica
+```mermaid
+sequenceDiagram
+    participant T as Tienda Online (Container)
+    participant B as Redis Broker (Container)
+    participant E as ERP Sistema (Container)
+
+    Note over T, E: Flujo de Integración Asíncrona
+    T->>B: Enviando Pedido "ORD-001"
+    B-->>E: ERP extrae pedido del Broker
+    E->>E: Procesando e Integrando...

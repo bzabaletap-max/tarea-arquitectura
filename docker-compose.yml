@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  # El Broker (Intermediario de mensajes)
+  broker-redis:
+    image: redis:alpine
+    container_name: broker-redis
+    networks:
+      - ecommerce-net
+
+  # Sistema de Front Office (Tienda Online)
+  tienda-online:
+    image: alpine
+    container_name: tienda-online
+    depends_on:
+      - broker-redis
+    networks:
+      - ecommerce-net
+    command: >
+      sh -c "apk add --no-cache redis && 
+      while true; do 
+        echo 'NUEVO_PEDIDO_ORD-001' | redis-cli -h broker-redis -x lpush pedidos_queue;
+        echo 'Front Office: Pedido enviado al Broker';
+        sleep 10;
+      done"
+
+  # Sistema de Back Office (ERP Core)
+  erp-sistema:
+    image: alpine
+    container_name: erp-sistema
+    depends_on:
+      - broker-redis
+    networks:
+      - ecommerce-net
+    command: >
+      sh -c "apk add --no-cache redis && 
+      while true; do 
+        PEDIDO=$$(redis-cli -h broker-redis rpop pedidos_queue);
+        if [ -n \"$$PEDIDO\" ]; then
+          echo \"ERP: Procesando e integrando pedido: $$PEDIDO\";
+        else
+          echo 'ERP: Esperando nuevos pedidos...';
+        fi;
+        sleep 5;
+      done"
+
+networks:
+  ecommerce-net:
+    driver: bridge

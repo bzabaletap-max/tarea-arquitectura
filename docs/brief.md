@@ -7,11 +7,30 @@
 
 ### Diagrama de Arquitectura
 ```mermaid
-graph LR
-    Shopify[Tienda Online] -- "Pedidos (Eventos)" --> Redis((Broker))
-    Redis --> ERP[ERP Central]
-    ERP --> CRM[Salesforce]
-    ERP --> BI[Data Warehouse]
+graph TD
+    subgraph Front_Office [Front Office - Canales de Venta]
+        Shopify[Tienda Online / Shopify]
+        POS[Punto de Venta Físico]
+    end
+
+    subgraph Middleware [Capa de Integración - Event Driven]
+        Broker((Redis / Message Broker))
+    end
+
+    subgraph Core [System of Record - El Núcleo]
+        ERP[(SAP ERP / Núcleo)]
+    end
+
+    subgraph Satellites [Sistemas Satélite y Analítica]
+        CRM[Salesforce / CRM]
+        BI[Google BigQuery / BI]
+    end
+
+    Shopify -->|Publica Pedido| Broker
+    POS -->|Publica Venta| Broker
+    Broker -->|Consume Evento| ERP
+    ERP -->|Sincroniza Cliente| CRM
+    ERP -->|Carga de Datos| BI
 
     ## A2) Gobierno de TI (COBIT — mínimo viable)
 
