@@ -33,9 +33,9 @@ graph TD
     Broker --> ERP
     ERP --> CRM
     ERP --> BI
-    ```
-    
-    ## A2) Gobierno de TI (COBIT — mínimo viable)
+```
+
+## A2) Gobierno de TI (COBIT — mínimo viable)
 
 ### Roles y Responsabilidades
 * **Dirección (Board/CEO):** Responsable de alinear la estrategia de expansión del E-commerce con las inversiones en tecnología.
