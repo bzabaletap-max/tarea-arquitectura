@@ -7,32 +7,31 @@
 
 ### Diagrama de Arquitectura
 
-```mermaid
-graph TD
-    subgraph Front_Office [Front Office - Canales de Venta]
-        Shopify[Tienda Online / Shopify]
-        POS[Punto de Venta Físico]
+```graph TD
+    subgraph Front_Office [Front Office]
+        Shopify[Tienda Online]
+        POS[Venta Fisica]
     end
 
-    subgraph Middleware [Capa de Integración - Event Driven]
-        Broker((Redis / Message Broker))
+    subgraph Middleware [Capa Integracion]
+        Broker((Message Broker))
     end
 
-    subgraph Core [System of Record - El Núcleo]
-        ERP[(SAP ERP / Núcleo)]
+    subgraph Core [Núcleo]
+        ERP[(SAP ERP)]
     end
 
-    subgraph Satellites [Sistemas Satélite y Analítica]
-        CRM[Salesforce / CRM]
-        BI[Google BigQuery / BI]
+    subgraph Satellites [Sistemas Satelite]
+        CRM[Salesforce]
+        BI[BigQuery BI]
     end
 
-    Shopify -->|Publica Pedido| Broker
-    POS -->|Publica Venta| Broker
-    Broker -->|Consume Evento| ERP
-    ERP -->|Sincroniza Cliente| CRM
-    ERP -->|Carga de Datos| BI
-
+    Shopify --> Broker
+    POS --> Broker
+    Broker --> ERP
+    ERP --> CRM
+    ERP --> BI
+    
     ## A2) Gobierno de TI (COBIT — mínimo viable)
 
 ### Roles y Responsabilidades
