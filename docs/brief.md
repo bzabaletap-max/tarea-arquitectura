@@ -9,20 +9,21 @@
 
 ```mermaid
 graph TD
+
     subgraph Front_Office ["Front Office"]
         Shopify["Tienda Online"]
-        POS["Venta Fisica"]
+        POS["Venta Física"]
     end
 
-    subgraph Middleware ["Capa Integracion"]
+    subgraph Middleware ["Capa Integración"]
         Broker["Message Broker"]
     end
 
-    subgraph Core ["Nucleo"]
+    subgraph Core ["Núcleo"]
         ERP["SAP ERP"]
     end
 
-    subgraph Satellites ["Sistemas Satelite"]
+    subgraph Satellites ["Sistemas Satélite"]
         CRM["Salesforce"]
         BI["BigQuery BI"]
     end
@@ -33,7 +34,7 @@ graph TD
     ERP --> CRM
     ERP --> BI
     ```
-
+    
     ## A2) Gobierno de TI (COBIT — mínimo viable)
 
 ### Roles y Responsabilidades
