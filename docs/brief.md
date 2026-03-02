@@ -32,6 +32,7 @@ graph TD
     Broker --> ERP
     ERP --> CRM
     ERP --> BI
+    ```
     
     ## A2) Gobierno de TI (COBIT — mínimo viable)
 
