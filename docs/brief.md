@@ -6,6 +6,7 @@
 * **Flujo BI:** Integración mediante eventos hacia Google BigQuery para reportes de ventas.
 
 ### Diagrama de Arquitectura
+
 ```mermaid
 graph TD
     subgraph Front_Office [Front Office - Canales de Venta]
