@@ -9,22 +9,22 @@
 
 ```mermaid
 graph TD
-    subgraph Front_Office [Front Office]
-        Shopify[Tienda Online]
-        POS[Venta Fisica]
+    subgraph Front_Office ["Front Office"]
+        Shopify["Tienda Online"]
+        POS["Venta Fisica"]
     end
 
-    subgraph Middleware [Capa Integracion]
-        Broker[Message Broker]
+    subgraph Middleware ["Capa Integracion"]
+        Broker["Message Broker"]
     end
 
-    subgraph Core [Nucleo]
-        ERP[SAP ERP]
+    subgraph Core ["Nucleo"]
+        ERP["SAP ERP"]
     end
 
-    subgraph Satellites [Sistemas Satelite]
-        CRM[Salesforce]
-        BI[BigQuery BI]
+    subgraph Satellites ["Sistemas Satelite"]
+        CRM["Salesforce"]
+        BI["BigQuery BI"]
     end
 
     Shopify --> Broker
