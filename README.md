@@ -3,7 +3,7 @@
 Este repositorio contiene la entrega de la primera tarea del curso, enfocada en un caso de E-commerce.
 
 ## Enlaces de Entrega
-* **Video de la Demo:** [PEGA AQUÍ TU LINK DE GOOGLE DRIVE]
+* **Video de la Demo:** [https://drive.google.com/file/d/1rjZYzm-eZkF5tuEL_xp6FvSgLAdu2P2o/view?usp=sharing]
 * **Documentación Detallada:** [docs/brief.md](./docs/brief.md)
 
 ## Cómo ejecutar la demo
